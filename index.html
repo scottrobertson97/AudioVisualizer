@@ -18,7 +18,7 @@
 			margin-left: auto;
 			margin-right: auto;
 			display: block;
-			// box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+			/* box-shadow: 4px 4px 8px rgba(0,0,0,0.5); */
 			background: black;
 		}
 
@@ -38,12 +38,43 @@
 			text-align: center;
 			padding: 5pt;
 		}
+		#start {
+			position: fixed; /* Sit on top of the page content */
+			/*display: none;  Hidden by default */
+			display: flex;
+  			justify-content: center;
+			align-items: center;
+			width: 100%; /* Full width (cover the whole page) */
+			height: 100%; /* Full height (cover the whole page) */
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+			z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+			 /* Add a pointer on hover */
+		}
+		#startbutton{
+			background-color: #4CAF50;
+			cursor: pointer;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+		}
+		#startbutton:hover{
+			background-color:  #1f6e21;
+		}
 
 	</style>
 	
 	<script>
 		// An IIFE ("Iffy") - see the notes in mycourses
-		(function() {
+		function start () {
 			"use strict";
 			var NUM_SAMPLES = 256;
 			//sound files
@@ -509,13 +540,22 @@
 				// .. and do nothing if the method is not supported
 			};
 
-			window.addEventListener("load", init);
-		}());
-
+			//window.addEventListener("load", init);
+			init();
+		}
+		function startprogram(){
+			document.getElementById("start").style.display = "none";
+			start();
+		}
 	</script>
 </head>
 
 <body>
+	<div id="start">
+		<button id="startbutton" onclick="startprogram()">
+			Start Program ⯈
+		</button>
+	</div>
 	<div class="row">
 			<div class="col">
 				<h1>
